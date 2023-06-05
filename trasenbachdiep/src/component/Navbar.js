@@ -5,19 +5,18 @@ import styled from 'styled-components'
 
 function Navbar() {
     const [showList, setShowList] = useState(false)
-   
     return (
-        <NavbarMenu onUpdate={() => window.scrollTo(0, 0)}>
-            <div className='heading'>
+        <NavbarMenu >
+            <div className='heading' >
                 <div className="logo">
                     <img src={logo} alt="logo" />
                 </div>
-                <div className='toggle' onClick={() => setShowList(!showList)}>
+                <div className='toggle' onClick={() => setShowList(!showList ) }  >
                     <span className="bar"></span> 
                     <span className="bar"></span>
                     <span className="bar"></span>
                 </div>
-                <div className=" navbar-main" id={showList ? "hidden" : ""}>
+                <div className=" navbar-main" id={showList ? "hidden" : ""} >
                     <ul>
                         <li>
                             <Link to={'/index'}  onClick={()=>setShowList(!showList)} >Trang chủ</Link>

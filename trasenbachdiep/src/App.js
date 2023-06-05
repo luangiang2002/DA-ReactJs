@@ -11,24 +11,36 @@ import Lienhe from './component/Lienhe';
 import CtSanpham1 from './component/CtSanpham1';
 import Footer from './component/Footer';
 import Navbar from './component/Navbar';
+import {  useEffect, useState } from 'react';
+
 function App() {
+  const [login, setLogin] = useState(false);
+  const handleLogin = (login) => {
+    setLogin(login)
+  }
+  const element = login ? <>
+    <BrowserRouter >
+      <Navbar />
+      <Routes >
+        <Route path='register' element={<Regiter/>}></Route>
+        <Route path='/' element={<Login />}></Route>
+        <Route path='index' element={<Index />}></Route>
+        <Route path="gioithieu" element={<Gioithieu />} ></Route>
+        <Route path="sanpham" element={<Sanpham />} ></Route>
+        <Route path="tintuc" element={<Tintuc />} ></Route>
+        <Route path="lienhe" element={<Lienhe />} ></Route>
+        <Route path="ctsp1" element={<CtSanpham1 />} ></Route>
+      </Routes>
+      <Footer />
+    </BrowserRouter>
+  </> :
+  <BrowserRouter><Login onLogin={handleLogin}/></BrowserRouter>
+
+  
   
   return (
     <div className="App">
-      <BrowserRouter >
-      <Navbar />
-        <Routes >
-          <Route path='register' element={<Regiter/>}></Route>
-          <Route path='/' element={<Login/>}></Route>
-          <Route path='index' element={<Index/>}></Route>
-          <Route path="gioithieu" element={<Gioithieu />} ></Route>
-          <Route path="sanpham" element={<Sanpham />} ></Route>
-          <Route path="tintuc" element={<Tintuc />} ></Route>
-          <Route path="lienhe" element={<Lienhe />} ></Route>
-          <Route path="ctsp1" element={<CtSanpham1 />} ></Route>
-        </Routes>
-        <Footer/>
-      </BrowserRouter>
+      {element}
     </div>
   );
 }

@@ -148,6 +148,7 @@
 @media screen and (max-width: 1400px) {
     .product-intro .product .product-list .card img{
         width: 190px;
+        height: 100%;
     }
     .product-intro .product .product-list .card{
         width: 200px;

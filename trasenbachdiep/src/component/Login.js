@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import axiosUser from '../api/mockapi/user'
 import { useNavigate } from 'react-router-dom'
 import isEmpty from 'validator/lib/isEmpty'
-function Login() {
+function Login({onLogin}) {
     const [listUser, setListUsers] = useState([]);
     const [username, setUserName] = useState('');
     const [password, setPassWord] = useState('');
@@ -21,7 +21,6 @@ function Login() {
         // console.log(resp.data);
         setListUsers(resp.data)
     }
-    
     // console.log(isEmpty);
     const navigator = useNavigate()
    const validateAll=()=>{
@@ -32,8 +31,6 @@ function Login() {
     if(isEmpty(password)){
         msg.password="Vui lòng nhập Password"
     }
-   
-   
     setValidationMsg(msg)
     if(Object.keys(msg).length>0) return false
     return true
@@ -45,6 +42,7 @@ function Login() {
         
          listUser.map((item, index) => {
                if(item.username===username && item.password===password)
+               onLogin(isValid)
                return navigator("/index")
               
             })

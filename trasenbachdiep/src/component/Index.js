@@ -4,6 +4,7 @@ import '../css/index.css'
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { Link } from 'react-router-dom';
 
 var settings = {
   dots: true,
@@ -64,7 +65,7 @@ function Index() {
                 Sự hòa quyện tuyệt vời giữa hương thơm ngan ngát của <br />
                 sen Bách diệp Hồ Tây và vị đậm đà của trà Tân Cương.
               </p>
-              <input type="submit" defaultValue="THỬ NGAY" />
+              <Link to={'/'}><input type="submit" defaultValue="THỬ NGAY" /></Link>
             </div>
           </div>
           <div className="banner-img">
