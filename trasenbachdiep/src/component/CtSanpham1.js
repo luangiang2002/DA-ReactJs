@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import '../css/CtSanpham1.css'
-function CtSanpham1() {
+function CtSanpham1({renderProduct, renderData}) {
+   console.log(renderData);
+
     return (
         <div className='product-details'>
             <div>
@@ -154,4 +156,4 @@ function CtSanpham1() {
     )
 }
 
-export default CtSanpham1
+export default CtSanpham1;

@@ -95,6 +95,7 @@
     border: none;
     text-align: center;
     font-size: 25pt;
+    margin-left: 30px;
 }
 
 .Idproduct .product .product-list img {
@@ -244,7 +245,7 @@
 }
 
 
-@media screen and (max-width: 1400px) {
+@media screen and (max-width: 1600px) {
     .Idproduct  .product .product-list img {
         height: 14rem;
         width: 230px;

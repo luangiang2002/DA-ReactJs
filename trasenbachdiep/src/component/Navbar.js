@@ -1,17 +1,23 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { Link, Outlet } from 'react-router-dom'
 import logo from '../asset/Pictures/trang-chu/logophongtra.png'
 import styled from 'styled-components'
 
 function Navbar() {
     const [showList, setShowList] = useState(false)
+    const handleClick=(e)=>{
+        // e.preventDefault();
+        window.scrollTo(0, 0)
+        setShowList(!showList)
+        
+    }
     return (
         <NavbarMenu >
             <div className='heading' >
                 <div className="logo">
                     <img src={logo} alt="logo" />
                 </div>
-                <div className='toggle' onClick={() => setShowList(!showList ) }  >
+                <div className='toggle' onClick={(e) => handleClick(e) }  >
                     <span className="bar"></span> 
                     <span className="bar"></span>
                     <span className="bar"></span>
@@ -19,19 +25,22 @@ function Navbar() {
                 <div className=" navbar-main" id={showList ? "hidden" : ""} >
                     <ul>
                         <li>
-                            <Link to={'/index'}  onClick={()=>setShowList(!showList)} >Trang chủ</Link>
+                            <Link to={'/'}  onClick={ handleClick} >Trang chủ</Link>
                         </li>
                         <li>
-                            <Link to={'/gioithieu'} onClick={()=>setShowList(!showList)}>Giới thiệu</Link>
+                            <Link to={'/gioithieu'} onClick={ handleClick}>Giới thiệu</Link>
                         </li>
                         <li>
-                            <Link to={'/sanpham'} onClick={()=>setShowList(!showList)}>Sản phẩm</Link>
+                            <Link to={'/sanpham'} onClick={ handleClick}>Sản phẩm</Link>
                         </li>
                         <li>
-                            <Link to={'/tintuc'} onClick={()=>setShowList(!showList)}>Tin tức</Link>
+                            <Link to={'/tintuc'} onClick={ handleClick}>Tin tức</Link>
                         </li>
                         <li>
-                            <Link to={'/lienhe'} onClick={()=>setShowList(!showList)}>Liên hệ</Link>
+                            <Link to={'/lienhe'} onClick={ handleClick}>Liên hệ</Link>
+                        </li>
+                        <li>
+                            <Link to={'/login'} onClick={ handleClick}>Login</Link>
                         </li>
                     </ul>
                 </div>

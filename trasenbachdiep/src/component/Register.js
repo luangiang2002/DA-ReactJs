@@ -42,7 +42,7 @@ function Register() {
     const isValid=validateAll()
     if(!isValid) return
     await axiosUser.post('user',{username,password,ConfirmPassword})
-    navigate('/')
+    navigate('/login')
   }
 
 
