@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import axiosUser from '../api/mockapi/user'
 import { useNavigate } from 'react-router-dom'
 import isEmpty from 'validator/lib/isEmpty'
-function Login() {
+function Login({ ontoggle }) {
     const [listUser, setListUsers] = useState([]);
     const [username, setUserName] = useState('');
     const [password, setPassWord] = useState('');
@@ -29,25 +29,30 @@ function Login() {
         if (Object.keys(msg).length > 0) return false
         return true
     }
-    const handleSubmit = () => {
+    const handleSubmit = (e) => {
         const isValid = validateAll()
         if (!isValid) return
         listUser.map((item, index) => {
             if (item.username === username && item.password === password)
-                return navigator("/index")
+              ontoggle(false)
+            return navigator("/")
         })
+    }
+    const handleTongle=()=>{
+        ontoggle(true)
     }
     return (
         <div className='login'>
             <div className='login-lg'>
                 <h1>LOGIN</h1>
-                <p>Please enter your and password</p>
-                <input type='text' placeholder='Email/Name'  onChange={(e) => setUserName(e.target.value)}></input>
+                <p>Vui lòng đăng nhập để mua hàng</p>
+                <input type='text' placeholder='Email/Name' onChange={(e) => setUserName(e.target.value)}></input>
                 <span>{validationMsg.username}</span>
-                <input type='password' placeholder='Password'  onChange={(e) => setPassWord(e.target.value)}></input>
+                <input type='password' placeholder='Password' onChange={(e) => setPassWord(e.target.value)}></input>
                 <span>{validationMsg.password}</span>
                 <input type='submit' value="LOGIN" onClick={handleSubmit}></input>
                 <p>Don't have an account ? <Link to={'/register'}>Sign Up</Link></p>
+                <p>Bỏ qua trở về <Link to={'/'} onClick={handleTongle}>Trang chủ</Link></p>
             </div>
         </div>
     )

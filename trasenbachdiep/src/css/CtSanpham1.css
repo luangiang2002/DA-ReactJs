@@ -28,6 +28,11 @@
     margin-left: 10px;
     font-size:20px;
 }
+.product-details .item .title input{
+    width: 100px;
+    border: 0;
+    background-color: #aabc44;
+}
 .product-details .item .title .dola{
     font-size: 20px;
     

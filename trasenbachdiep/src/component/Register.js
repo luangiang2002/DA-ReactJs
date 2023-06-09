@@ -55,7 +55,7 @@ function Register() {
       <span>{validationMsg.password}</span>
       <input type='password' placeholder='Confrim Password'onChange={(e)=>setConfirmPassword(e.target.value)} ></input>
       <span>{validationMsg.ConfirmPassword}</span>
-      <p>Do you already have an account? <Link to={'/'} >Login</Link></p>
+      <p>Do you already have an account? <Link to={'/login'} >Login</Link></p>
       <input type='submit' value="Register" onClick={CreateRigister}></input>
     </div>
   )

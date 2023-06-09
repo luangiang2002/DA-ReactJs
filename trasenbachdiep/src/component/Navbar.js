@@ -3,21 +3,23 @@ import { Link, Outlet } from 'react-router-dom'
 import logo from '../asset/Pictures/trang-chu/logophongtra.png'
 import styled from 'styled-components'
 
-function Navbar() {
+function Navbar({ontoggle}) {
     const [showList, setShowList] = useState(false)
-    const handleClick=(e)=>{
-        // e.preventDefault();
+    const handleClick=()=>{
         window.scrollTo(0, 0)
         setShowList(!showList)
-        
+    }
+    
+    const handleToggle=()=>{
+        ontoggle(true)
     }
     return (
-        <NavbarMenu >
+        <NavbarMenu onClick={handleToggle} >
             <div className='heading' >
                 <div className="logo">
                     <img src={logo} alt="logo" />
                 </div>
-                <div className='toggle' onClick={(e) => handleClick(e) }  >
+                <div className='toggle' onClick={ handleClick}  >
                     <span className="bar"></span> 
                     <span className="bar"></span>
                     <span className="bar"></span>
@@ -38,9 +40,6 @@ function Navbar() {
                         </li>
                         <li>
                             <Link to={'/lienhe'} onClick={ handleClick}>Liên hệ</Link>
-                        </li>
-                        <li>
-                            <Link to={'/login'} onClick={ handleClick}>Login</Link>
                         </li>
                     </ul>
                 </div>

@@ -1,10 +1,14 @@
 import React from 'react'
-import { Link, Outlet } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import logo from "../asset/Pictures/trang-chu/logophongtra.png"
 import backround from '../asset/Pictures/trang-chu/fotter.png'
 import '../css/footer.css'
 
 function Footer() {
+  const handleClick=()=>{
+    window.scrollTo(0, 0)
+  }
+ 
     return (
 
         <div className="footer">
@@ -28,13 +32,13 @@ function Footer() {
                 <h3>Về Trang chủ</h3>
                 <div className="card-body">
                   <p className="card-text">
-                  <Link to={'/Sanpham'}>Sản phẩm</Link>
+                  <Link to={'/Sanpham'} onClick={handleClick}>Sản phẩm</Link>
                   </p>
                   <p className="card-text">
-                  <Link to={'/Gioithieu'}>Giới thiệu</Link>
+                  <Link to={'/Gioithieu'} onClick={handleClick}>Giới thiệu</Link>
                   </p>
                   <p className="card-text">
-                    <Link to={'/Tintuc'}>Tin Tức</Link>
+                    <Link to={'/Tintuc'} onClick={handleClick}>Tin Tức</Link>
                   </p>
                 </div>
               </div>

@@ -1,56 +1,4 @@
 
-// import { BrowserRouter, Route, Routes } from 'react-router-dom';
-// import './App.css';
-// import Regiter from './component/Register'
-// import Login from './component/Login';
-// import Index from './component/Index';
-// import Gioithieu from './component/Gioithieu';
-// import Sanpham from './component/Sanpham';
-// import Tintuc from './component/Tintuc';
-// import Lienhe from './component/Lienhe';
-// import CtSanpham1 from './component/CtSanpham1';
-// import Footer from './component/Footer';
-// import Navbar from './component/Navbar';
-// import { useState } from 'react';
-
-// function App() {
-//   const [login, setLogin] = useState(false);
-//   const handleLogin = (login) => {
-//     setLogin(login)
-//   }
-//   console.log(login);
-//   const element = login ? <>
-//     <BrowserRouter >
-//       <Navbar />
-//       <Routes >
-//         <Route path='register' element={<Regiter />}></Route>
-//         <Route path='/' element={<Login />}></Route>
-//         <Route path='index' element={<Index />}></Route>
-//         <Route path="gioithieu" element={<Gioithieu />} ></Route>
-//         <Route path="sanpham" element={<Sanpham />} ></Route>
-//         <Route path="tintuc" element={<Tintuc />} ></Route>
-//         <Route path="lienhe" element={<Lienhe />} ></Route>
-//         <Route path="ctsp1" element={<CtSanpham1 />} ></Route>
-//       </Routes>
-//       <Footer />
-//     </BrowserRouter>
-//   </> :
-//     <BrowserRouter>
-//       <Login onLogin={handleLogin} />
-//     </BrowserRouter>
-
-
-
-//   return (
-//     <div className="App">
-//       {element}
-//     </div>
-//   );
-// }
-
-// export default App;
-
-
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Index from './component/Index';
@@ -66,10 +14,8 @@ import axioProduct from './api/mockapi/user'
 import Login from './component/Login';
 import Register from './component/Register';
 
-function App({onData}) {
+function App() {
   const [listUser, setListUser] = useState([]);
-
-
   useEffect(() => {
     getAllUser()
   }, [])
@@ -81,28 +27,42 @@ function App({onData}) {
   let hadleData = listUser.map((item) => {
     return item
   })
+  const [list, setList] = useState([])
 
-  const handleShow = (item, index) => {
-    onData(item, index);
-    
-  } 
-  console.log("a",onData);
+  const handleShow = (item) => {
+    setList(item)
+
+  };
+  const [toggle, setToggle] = useState(true)
+  const handleBuy = (toggle) => {
+    setToggle(toggle)
+    console.log(toggle);
+  }
+
   return (
     <div className="App">
       <>
         <BrowserRouter >
-          <Navbar />
-          <Routes >
-            <Route path='/' element={<Index />}></Route>
-            <Route path="gioithieu" element={<Gioithieu />} ></Route>
-            <Route path="sanpham" element={<Sanpham renderProduct={hadleData} onData={handleShow}/>} ></Route>
-            <Route path="tintuc" element={<Tintuc />} ></Route>
-            <Route path="lienhe" element={<Lienhe />} ></Route>
-            <Route path="ctsp1" element={<CtSanpham1 renderProduct={hadleData} renderData={handleShow}/>} ></Route>
-            <Route path='login' element={<Login />}></Route>
+          {toggle ? <>
+            <Navbar ontoggle={handleBuy} />
+            <Routes >
+              <Route path='/' element={<Index />}></Route>
+              <Route path="gioithieu" element={<Gioithieu />} ></Route>
+              <Route path="sanpham" element={<Sanpham renderProduct={hadleData} onData={handleShow} />} ></Route>
+              <Route path="tintuc" element={<Tintuc />} ></Route>
+              <Route path="lienhe" element={<Lienhe />} ></Route>
+              <Route path="ctsp1" element={<CtSanpham1 renderData={list} ontoggle={handleBuy} renderProduct={hadleData} />} ></Route>
+              {/* <Route path='login' element={<Login ontoggle={handleBuy} />}></Route>
+              <Route path='register' element={<Register />}></Route> */}
+            </Routes>
+            <Footer />
+          </> : <>
+            <Routes>
+            <Route path='login' element={<Login ontoggle={handleBuy}/>}></Route>
             <Route path='register' element={<Register />}></Route>
-          </Routes>
-          <Footer />
+            </Routes>
+          </>
+          }
         </BrowserRouter>
       </>
     </div>

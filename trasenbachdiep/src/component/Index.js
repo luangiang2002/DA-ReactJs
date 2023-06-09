@@ -22,7 +22,7 @@ var settings1 = {
   speed: 1000,
   slidesToShow: 4,
   slidesToScroll: 1,
-  // lazyLoad: true,
+  lazyLoad: true,
   autoplay: true,
   autoplaySpeed: 2000,
   responsive: [
@@ -60,12 +60,12 @@ function Index() {
           <div className="banner-img">
             <img src={baner} alt="" />
             <div className="banner-title">
-              <h1>Trà ướp sen tầy hồ</h1>
-              <p>
+              <h1 >Trà ướp sen tầy hồ</h1>
+              <p >
                 Sự hòa quyện tuyệt vời giữa hương thơm ngan ngát của <br />
                 sen Bách diệp Hồ Tây và vị đậm đà của trà Tân Cương.
               </p>
-              <Link to={'/'}><input type="submit" defaultValue="THỬ NGAY" /></Link>
+              <Link to={'/'}><input type="submit" defaultValue="THỬ NGAY" className='wow animate__bounceInLeft'/></Link>
             </div>
           </div>
           <div className="banner-img">
@@ -153,8 +153,8 @@ function Index() {
               alt="hoasen"
               className="hoasen"
             />
-            <h1>GIỚI THIỆU</h1>
-            <span>
+            <h1 >GIỚI THIỆU</h1>
+            <span >
               Trà ướp Sen Bách Diệp - tinh hoa văn hóa Hà Thành là sự hòa quyện
               tuyệt vời giữa hương thơm ngan ngát của bông sen Bách diệp Hồ Tây và
               vị đậm đà của trà <br />
